@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 pyenv_zsh_refresh() {
+  # From https://github.com/pyenv/pyenv#choosing-the-python-version
   if [[ -n "$PYENV_VERSION" ]]; then
     PYENV_ZSH_PYTHON_VERSIONS+=("$PYENV_VERSION")
     return
@@ -17,6 +18,9 @@ pyenv_zsh_refresh() {
   fi
 
   if [[ -f "$version_file" ]]; then
+    # This is the fastest way to read a file into zsh. Using cat or another
+    # program will start a subshell and is much slower. See
+    # georgewitteman/zsh-prompt for some scripts that test the speed.
     PYENV_ZSH_PYTHON_VERSIONS=("${(f)$(<$version_file)}")
   else
     PYENV_ZSH_PYTHON_VERSIONS=()

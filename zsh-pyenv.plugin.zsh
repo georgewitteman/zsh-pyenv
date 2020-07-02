@@ -31,6 +31,7 @@ pyenv_zsh_refresh() {
 
   # (Oa) reverses the array (O = reverse of the order specified in the next flag,
   # a = normal array order)
+  local version
   for version in ${(Oa)PYENV_ZSH_PYTHON_VERSIONS}; do
     local entry="$PYENV_ROOT/versions/$version/bin"
     if [[ -d "$entry" ]]; then
